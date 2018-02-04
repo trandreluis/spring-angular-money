@@ -41,8 +41,12 @@ public class CategoriaResource {
 	}
 	
 	@GetMapping("/{id}")
-	public Categoria buscarPeloId(@PathVariable Long id) {
-		return categoriaRepository.findOne(id);
+	public ResponseEntity<?> buscarPeloId(@PathVariable Long id) {
+		Categoria categoriaEncontrada = categoriaRepository.findOne(id);
+		if(categoriaEncontrada == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(categoriaRepository.findOne(id));
 	}
 
 }
