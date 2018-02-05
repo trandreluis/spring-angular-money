@@ -1,14 +1,20 @@
 package com.trandreluis.money.api.model;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Endereco {
 
+	@Size(min = 2, max = 50)
 	private String logradouro;
+	@Size(min = 1, max = 6)
 	private String numero;
+	@Size(min = 2, max = 20)
 	private String complemento;
+	@Size(min = 2, max = 20)
 	private String bairro;
+	@Size(max = 9)
 	private String cep;
 	private String cidade;
 	private String estado;
