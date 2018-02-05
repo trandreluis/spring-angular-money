@@ -47,7 +47,7 @@ public class CategoriaResource {
 		if(categoriaEncontrada == null) {
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(categoriaRepository.findOne(id));
+		return ResponseEntity.ok(categoriaEncontrada);
 	}
 
 }
