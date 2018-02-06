@@ -31,7 +31,6 @@ public class MoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		List<Erro> erros = criarListaErros(ex.getBindingResult());
 		
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
-		
 	}
 	
 	private List<Erro> criarListaErros(BindingResult bindingResult) {
@@ -39,18 +38,14 @@ public class MoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		List<Erro> erros = new ArrayList<>();
 
 		for (FieldError fieldError : bindingResult.getFieldErrors()) {
-			
 			String mensagemUsuario = messageSource.getMessage(fieldError,
 					LocaleContextHolder.getLocale());
 			String mensagemDesenvolvedor = fieldError.toString();
 			
 			erros.add(new Erro(mensagemUsuario, mensagemDesenvolvedor));
-
 		}
 		
-		
 		return erros;
-		
 	}
 	
 	@Override
@@ -65,7 +60,6 @@ public class MoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		
 		return handleExceptionInternal(ex, erros,
 				headers, HttpStatus.BAD_REQUEST, request);
-
 	}
 	
 	public static class Erro {
