@@ -24,5 +24,19 @@ VALUES ('Davi', 0, 'Rua 7', '8', 'Janelas verdes', 'Tamarineira', '325089-88', '
 
 INSERT INTO pessoa (nome, ativo) VALUES ('Vanderlan', 1);
 
+INSERT INTO pessoa (nome, ativo) VALUES ('Luciano', 0);
+
+INSERT INTO pessoa (nome, ativo) VALUES ('Carlos', 1);
+
+INSERT INTO pessoa (nome, ativo) VALUES ('Cristiano', 0);
+
+INSERT INTO pessoa (nome, ativo) VALUES ('Emanuela', 1);
+
+INSERT INTO pessoa (nome, ativo) VALUES ('Ana', 0);
+
+INSERT INTO pessoa (nome, ativo) VALUES ('Lúcia', 1);
+
+INSERT INTO pessoa (nome, ativo) VALUES ('Carla', 0);
+
 INSERT INTO pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado)
 VALUES ('Luís', 1, 'Rua da Ferrovia', '76', 'Terceiro andar', 'Lusitana', '87098-491', 'Curituba', 'Paraná');
