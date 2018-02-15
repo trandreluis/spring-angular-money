@@ -56,11 +56,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Suporte do Jackson para datas do Java 8 (LocalDate) -->
+		<!-- Suporte do Hibernate para o Java 8 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-java8</artifactId>
 		</dependency>
+		
+		<!-- Suporte do Jackson para datas do Java 8 (LocalDate) -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
