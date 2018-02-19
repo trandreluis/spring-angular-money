@@ -24,6 +24,7 @@ import com.trandreluis.money.api.event.RecursoCriadoEvent;
 import com.trandreluis.money.api.exceptionhandler.MoneyExceptionHandler.Erro;
 import com.trandreluis.money.api.model.Lancamento;
 import com.trandreluis.money.api.repository.LancamentoRepository;
+import com.trandreluis.money.api.repository.filter.LancamentoFilter;
 import com.trandreluis.money.api.service.LancamentoService;
 import com.trandreluis.money.api.service.exception.PessoaInexistenteOuInativaException;
 
@@ -44,8 +45,8 @@ public class LancamentoResource {
 	private MessageSource messageSource;
 	
 	@GetMapping
-	public List<Lancamento> listar() {
-		return lancamentoRepository.findAll();
+	public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter) {
+		return lancamentoRepository.filtrar(lancamentoFilter);
 	}
 	
 	@PostMapping
