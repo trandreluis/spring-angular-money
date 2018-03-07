@@ -1,7 +1,7 @@
 CREATE TABLE pessoa(
 	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50) NOT NULL,
-	ativo BOOLEAN DEFAULT NULL,
+	ativo BOOLEAN NOT NULL,
 	logradouro VARCHAR(50),
 	numero VARCHAR(6),
 	complemento VARCHAR(20),
