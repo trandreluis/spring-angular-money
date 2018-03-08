@@ -81,6 +81,12 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		
+		<!-- OAuth2 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -91,6 +97,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
