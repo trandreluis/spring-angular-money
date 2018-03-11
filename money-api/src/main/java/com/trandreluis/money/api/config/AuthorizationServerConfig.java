@@ -9,7 +9,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
@@ -17,27 +18,29 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Autowired
 	private AuthenticationManager authenticatorManager;
-	
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory()
-			.withClient("angular")
-			.secret("@ngul@r")
-			.scopes("read", "write")
-			.authorizedGrantTypes("password")
-			.accessTokenValiditySeconds(1800);
+		clients.inMemory().withClient("angular").secret("@ngul@r").scopes("read", "write")
+				.authorizedGrantTypes("password").accessTokenValiditySeconds(1800);
 	}
-	
+
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints
-			.tokenStore(tokenStore())
-			.authenticationManager(authenticatorManager);
+		endpoints.tokenStore(tokenStore()).accessTokenConverter(accessTokenConverter())
+				.authenticationManager(authenticatorManager);
 	}
-	
+
+	@Bean
+	public JwtAccessTokenConverter accessTokenConverter() {
+		JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
+		accessTokenConverter.setSigningKey("money");
+		return accessTokenConverter;
+	}
+
 	@Bean
 	public TokenStore tokenStore() {
-		return new InMemoryTokenStore();
+		return new JwtTokenStore(accessTokenConverter());
 	}
-	
+
 }
