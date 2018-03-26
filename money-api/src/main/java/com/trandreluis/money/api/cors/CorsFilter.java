@@ -11,16 +11,19 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.trandreluis.money.api.property.MoneyApiProperty;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
-
-	private String originPermitida = "http://localhost:8000"; // TODO: Configurar para diferentes ambientes
+	
+	@Autowired
+	private MoneyApiProperty moneyApiProperty;
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -29,10 +32,10 @@ public class CorsFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
-		resp.setHeader("Access-Control-Allow-Origin", originPermitida);
+		resp.setHeader("Access-Control-Allow-Origin", moneyApiProperty.getOriginPermitida());
 		resp.setHeader("Access-Control-Allow-Credentials", "true");
 		
-		if(req.getMethod().equals("OPTIONS") && req.getHeader("Origin").equals(originPermitida)) {
+		if(req.getMethod().equals("OPTIONS") && req.getHeader("Origin").equals(moneyApiProperty.getOriginPermitida())) {
 		
 			resp.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
 			resp.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
