@@ -1,4 +1,4 @@
-package com.trandreluis.money.api.property;
+package com.trandreluis.money.api.config.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

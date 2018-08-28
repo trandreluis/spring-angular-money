@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import com.trandreluis.money.api.property.MoneyApiProperty;
+import com.trandreluis.money.api.config.property.MoneyApiProperty;
 
 @SpringBootApplication
 @EnableConfigurationProperties(MoneyApiProperty.class)

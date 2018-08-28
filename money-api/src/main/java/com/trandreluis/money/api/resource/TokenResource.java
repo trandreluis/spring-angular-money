@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trandreluis.money.api.property.MoneyApiProperty;
+import com.trandreluis.money.api.config.property.MoneyApiProperty;
 
 @RestController
 @RequestMapping("/tokens")

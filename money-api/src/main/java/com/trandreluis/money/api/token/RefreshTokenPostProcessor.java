@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import com.trandreluis.money.api.property.MoneyApiProperty;
+import com.trandreluis.money.api.config.property.MoneyApiProperty;
 
 @ControllerAdvice
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {

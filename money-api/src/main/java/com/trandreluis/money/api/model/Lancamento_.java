@@ -1,11 +1,13 @@
 package com.trandreluis.money.api.model;
 
-import com.trandreluis.money.api.enumeration.TipoLancamento;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+
+import com.trandreluis.money.api.enumeration.TipoLancamento;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Lancamento.class)

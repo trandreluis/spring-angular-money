@@ -16,7 +16,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import com.trandreluis.money.api.property.MoneyApiProperty;
+import com.trandreluis.money.api.config.property.MoneyApiProperty;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)

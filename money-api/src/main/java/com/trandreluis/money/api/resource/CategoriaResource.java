@@ -19,38 +19,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trandreluis.money.api.event.RecursoCriadoEvent;
 import com.trandreluis.money.api.model.Categoria;
-import com.trandreluis.money.api.repository.CategoriaRepository;
+import com.trandreluis.money.api.service.CategoriaService;
 
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaResource {
 
 	@Autowired
-	private CategoriaRepository categoriaRepository;
+	private CategoriaService categoriaService;
 
 	@Autowired
 	private ApplicationEventPublisher publisher;
 
-	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
-	public List<Categoria> listar() {
-		return categoriaRepository.findAll();
-	}
-
 	@PostMapping
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
-		Categoria categoriaSalva = categoriaRepository.save(categoria);
+		Categoria categoriaSalva = categoriaService.cadastrar(categoria);
 
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, categoriaSalva.getId()));
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
 	}
 
+	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
+	public List<Categoria> listar() {
+		return categoriaService.listar();
+	}
+
 	@GetMapping("/{id}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
 	public ResponseEntity<?> buscarPeloId(@PathVariable Long id) {
-		Categoria categoriaEncontrada = categoriaRepository.findOne(id);
+		Categoria categoriaEncontrada = categoriaService.buscarPeloId(id);
 		if (categoriaEncontrada == null) {
 			return ResponseEntity.notFound().build();
 		}
