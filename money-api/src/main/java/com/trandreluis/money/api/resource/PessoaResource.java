@@ -1,12 +1,12 @@
 package com.trandreluis.money.api.resource;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.trandreluis.money.api.event.RecursoCriadoEvent;
 import com.trandreluis.money.api.model.Pessoa;
 import com.trandreluis.money.api.repository.PessoaRepository;
+import com.trandreluis.money.api.repository.filter.PessoaFilter;
 import com.trandreluis.money.api.service.PessoaService;
 
 @RestController
@@ -39,8 +40,8 @@ public class PessoaResource {
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
-	public List<Pessoa> listar() {
-		return pessoaRepository.findAll();
+	public Page<Pessoa> listar(PessoaFilter pessoaFilter, Pageable pageable) {
+		return pessoaService.filtrar(pessoaFilter, pageable);
 	}
 
 	@PostMapping

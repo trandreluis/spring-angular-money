@@ -11,32 +11,13 @@ CREATE TABLE pessoa(
 	estado VARCHAR(50)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado)
-VALUES ('Severino', 1, 'Rua Nova', '10', 'Casa azul', 'Centro', '56900-000', 'Monteiro', 'Paraíba');
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Cleyton', 0);
-
-INSERT INTO pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado)
-VALUES ('André', 1, 'Av. Pres. Vargas', '10', 'Apt', 'Cabedelo', '37821-542', 'Prata', 'Paraíba');
-
-INSERT INTO pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado)
-VALUES ('Davi', 0, 'Rua 7', '8', 'Janelas verdes', 'Tamarineira', '325089-88', 'Serra Talhada', 'Pernambuco');
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Vanderlan', 1);
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Luciano', 0);
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Carlos', 1);
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Cristiano', 0);
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Emanuela', 1);
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Ana', 0);
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Lúcia', 1);
-
-INSERT INTO pessoa (nome, ativo) VALUES ('Carla', 0);
-
-INSERT INTO pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado)
-VALUES ('Luís', 1, 'Rua da Ferrovia', '76', 'Terceiro andar', 'Lusitana', '87098-491', 'Curituba', 'Paraná');
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('João Silva', 'Rua do Abacaxi', '10', null, 'Brasil', '38.400-12', 'Uberlândia', 'MG', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Maria Rita', 'Rua do Sabiá', '110', 'Apto 101', 'Colina', '11.400-12', 'Ribeirão Preto', 'SP', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Pedro Santos', 'Rua da Bateria', '23', null, 'Morumbi', '54.212-12', 'Goiânia', 'GO', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Ricardo Pereira', 'Rua do Motorista', '123', 'Apto 302', 'Aparecida', '38.400-12', 'Salvador', 'BA', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Josué Mariano', 'Av Rio Branco', '321', null, 'Jardins', '56.400-12', 'Natal', 'RN', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Pedro Barbosa', 'Av Brasil', '100', null, 'Tubalina', '77.400-12', 'Porto Alegre', 'RS', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Henrique Medeiros', 'Rua do Sapo', '1120', 'Apto 201', 'Centro', '12.400-12', 'Rio de Janeiro', 'RJ', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Carlos Santana', 'Rua da Manga', '433', null, 'Centro', '31.400-12', 'Belo Horizonte', 'MG', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Leonardo Oliveira', 'Rua do Músico', '566', null, 'Segismundo Pereira', '38.400-00', 'Uberlândia', 'MG', true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Isabela Martins', 'Rua da Terra', '1233', 'Apto 10', 'Vigilato', '99.400-12', 'Manaus', 'AM', true);

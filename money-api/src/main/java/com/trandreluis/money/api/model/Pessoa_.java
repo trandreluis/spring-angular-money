@@ -14,4 +14,3 @@ public abstract class Pessoa_ {
 	public static volatile SingularAttribute<Pessoa, Long> id;
 
 }
-
