@@ -1,5 +1,6 @@
 package com.trandreluis.money.api.service;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,6 +46,39 @@ public class LancamentoService {
 
 	public Lancamento buscarPeloId(Long id) {
 		return lancamentoRepository.findOne(id);
+	}
+
+	public Lancamento atualizar(Long id, Lancamento lancamento) {
+		Lancamento lancamentoSalvo = buscarLancamentoExistente(id);
+		if(!lancamento.getPessoa().equals(lancamentoSalvo.getPessoa())) {
+			validarPessoa(lancamento);
+		}
+		
+		BeanUtils.copyProperties(lancamento, lancamentoSalvo, "id");
+		
+		return lancamentoRepository.save(lancamentoSalvo);
+	}
+
+	private Lancamento buscarLancamentoExistente(Long id) {
+		Lancamento lancamentoSalvo = lancamentoRepository.findOne(id);
+		
+		if(lancamentoSalvo == null) {
+			throw new IllegalArgumentException();
+		}
+		return null;
+	}
+
+	private void validarPessoa(Lancamento lancamento) {
+		Pessoa pessoa = null;
+		
+		if(lancamento.getPessoa().getId() != null) {
+			pessoa = pessoaRepository.findOne(lancamento.getPessoa().getId());
+		}
+		
+		if(pessoa == null || pessoa.isInativo()) {
+			throw new PessoaInexistenteOuInativaException();
+		}
+		
 	}
 
 }
