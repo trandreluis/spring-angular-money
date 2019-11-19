@@ -23,14 +23,14 @@ public class MoneyApiProperty {
 
 	public static class Seguranca {
 		
-		private boolean EnableHttps;
+		private boolean enableHttps;
 
 		public boolean isEnableHttps() {
-			return EnableHttps;
+			return enableHttps;
 		}
 
 		public void setEnableHttps(boolean enableHttps) {
-			EnableHttps = enableHttps;
+			this.enableHttps = enableHttps;
 		}		
 	}
 	

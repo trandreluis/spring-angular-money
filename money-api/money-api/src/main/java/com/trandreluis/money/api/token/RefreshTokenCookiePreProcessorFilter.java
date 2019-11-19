@@ -2,6 +2,7 @@ package com.trandreluis.money.api.token;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -27,17 +28,17 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 
-		if (req.getRequestURI().equalsIgnoreCase("/oauth/token")
-				&& req.getParameter("grant_type").equals("refresh_token")
-				&& req.getCookies() != null) {
+		if ("/oauth/token".equalsIgnoreCase(req.getRequestURI())
+				&& "refresh_token".equals(req.getParameter("grant_type")) 
+				&& Objects.nonNull(req.getCookies())) {
 
 			for (Cookie cookie : req.getCookies()) {
-				if(cookie.getName().equals("refreshToken")) {
+				if (cookie.getName().equals("refreshToken")) {
 					String refreshToken = cookie.getValue();
 					req = new MyServletRequest(req, refreshToken);
 				}
 			}
-			
+
 		}
 		chain.doFilter(req, response);
 	}
@@ -51,24 +52,24 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
 	public void init(FilterConfig arg0) throws ServletException {
 
 	}
-	
+
 	static class MyServletRequest extends HttpServletRequestWrapper {
 
 		private String refreshToken;
-		
+
 		public MyServletRequest(HttpServletRequest request, String refreshToken) {
 			super(request);
 			this.refreshToken = refreshToken;
 		}
-		
+
 		@Override
 		public Map<String, String[]> getParameterMap() {
 			ParameterMap<String, String[]> map = new ParameterMap<>(getRequest().getParameterMap());
-			map.put("refresh_token", new String[] {refreshToken});
+			map.put("refresh_token", new String[] { refreshToken });
 			map.setLocked(true);
 			return map;
 		}
-		
+
 	}
 
 }
